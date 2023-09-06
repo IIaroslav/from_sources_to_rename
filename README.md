@@ -1,0 +1,3 @@
+`URL`  
+`USERNAME_1C`  
+`PASSWORD_1C`  
