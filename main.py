@@ -1,4 +1,5 @@
 import os
+import re
 from datetime import datetime
 
 import requests
@@ -14,55 +15,44 @@ def timestamp_to_datetime(timestamp):
 
 class Renaming:
     def __init__(self, sources_path):
-        self.errors = []
+        self.sources_path = sources_path
+        self.files_table = self.create_files_table()
+
         self.unique_aims = set()
         self.unique_series = set()
-        self.sources_path = sources_path
-        self.main_table = self.create_main_table()
-        self.main_tree = {}
+        self.aim_table = []
 
-    def determine_angle(self, file_name):
-        if '_' not in file_name:
-            return 1
-
-        name, extension = file_name.split('.')
-        barcode, angle = name.split('_')
-        if angle != '2':
-            self.errors.append(f'{file_name} has an angle problem')
-            return None
-        return 3
-
-    def create_main_table(self):
+    def create_files_table(self):
         table = []
+        pattern = r'^\d+(?:_2)?\.jpeg$'
+
         for file_name in os.listdir(self.sources_path):
-            angle = self.determine_angle(file_name)
-            if not angle:
-                continue
             full_path_file_name = os.path.join(self.sources_path, file_name)
-            creation_time = os.path.getctime(full_path_file_name)
+            created_at = os.path.getctime(full_path_file_name)
+            correct_file_name = False
+            angle = None
+            barcode = None
+            if re.match(pattern, file_name):
+                correct_file_name = True
+                barcode = self.get_barcode_from_file_name(file_name)
+                angle = [1, 3]['_' in file_name]
             current_line = {
                 'file_name': file_name,
-                'creation_time': creation_time,
-                'barcode': self.get_barcode_from_file_name(file_name),
-                'datetime': timestamp_to_datetime(creation_time),
+                'created_at': created_at,
+                'datetime': timestamp_to_datetime(created_at),
+                'correct_file_name': correct_file_name,
+                'barcode': barcode,
                 'angle': angle,
+                'aim': None,
+                'series': None,
             }
             table.append(current_line)
         return table
 
     def prepare_unique_series(self):
-        for line in self.main_table:
-            file_name = line['file_name']
-            if file_name.endswith('.jpg'):
-                print(file_name)
-                raise ValueError('jpg extension is not allowed')
-
-            photo_name, extension = file_name.split('.')
-            if photo_name.count('_') > 1:
-                print(file_name)
-                raise ValueError('filename has more than 1 underscore')
-
-            self.unique_series.add(self.get_barcode_from_file_name(file_name))
+        for line in self.files_table:
+            if line['correct_file_name']:
+                self.unique_series.add(line['barcode'])
 
     def make_request(self):
         self.prepare_unique_series()
@@ -78,43 +68,47 @@ class Renaming:
         with open('series.txt', 'w') as file:
             file.writelines('\n'.join(series))
 
-    def prepare_unique_aim(self):
-        for line in self.response_json:
-            aim = line['Трим_Аим']
-            if aim:
-                self.unique_aims.add(aim)
-
     def get_barcode_from_file_name(self, file_name):
         name, extension = file_name.split('.')
         return name.split('_')[0]
 
-    def add_aim_and_check_series_existence_to_main_table(self):
-        for line in self.main_table:
+    def join_1c_data(self):
+        for line in self.files_table:
             barcode = line['barcode']
+            if not barcode:
+                continue
             found_dict = next(
                 item
                 for item in self.response_json
                 if item.get('ШК') == barcode
             )
             line['aim'] = found_dict['Трим_Аим']
-            line['series_exists'] = bool(found_dict['Наименование'])
+            line['series'] = found_dict['Наименование']
 
-    def group_by_aim(self):
-        for unique_aim in self.unique_aims:
-            if not unique_aim:
-                continue
-            aim_table = []
-            aim_table_line = {
-                'aim': unique_aim,
+    def create_aim_table(self):
+        for line in self.files_table:
+            if line['aim']:
+                self.unique_aims.add(line['aim'])
+        for aim in self.unique_aims:
+            new_line = {
+                'aim': aim,
                 'angle1': [],
-                'angle3': []
+                'angle3': [],
             }
-            for line in self.main_table:
-                if unique_aim == line['aim'] and line['series_exists']:
-                    pass
-            # self.main_tree[unique_aim] = aim_lines
-        1
-
+            for file in (
+                line for line in self.files_table if line.get('aim') == aim
+            ):
+                if file['angle'] == 1:
+                    new_line['angle1'].append(file)
+                elif file['angle'] == 3:
+                    new_line['angle3'].append(file)
+            new_line['angle1'].sort(
+                key=lambda x: x['created_at'], reverse=True
+            )
+            new_line['angle3'].sort(
+                key=lambda x: x['created_at'], reverse=True
+            )
+            self.aim_table.append(new_line)
 
 
 def main():
@@ -123,11 +117,8 @@ def main():
     renaming = Renaming(source_path)
     renaming.make_request()
     # renaming.save_unique_series_to_file()
-    renaming.prepare_unique_aim()
-    renaming.add_aim_and_check_series_existence_to_main_table()
-    renaming.group_by_aim()
-    1
-
+    renaming.join_1c_data()
+    renaming.create_aim_table()
 
 
 if __name__ == '__main__':
