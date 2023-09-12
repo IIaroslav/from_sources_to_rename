@@ -370,16 +370,6 @@
     "series": "2020159340343"
   },
   {
-    "file_name": "2200001606180.jpeg",
-    "created_at": 1657895718.4227939,
-    "datetime": "15.07.2022 17:35:18",
-    "correct_file_name": true,
-    "barcode": "2200001606180",
-    "angle": 1,
-    "aim": "",
-    "series": "2200001606180"
-  },
-  {
     "file_name": "2300038738820.jpeg",
     "created_at": 1660040274.671854,
     "datetime": "09.08.2022 13:17:54",
@@ -600,106 +590,6 @@
     "series": "29202629"
   },
   {
-    "file_name": "29562143.jpeg",
-    "created_at": 1688964572.5345633,
-    "datetime": "10.07.2023 07:49:32",
-    "correct_file_name": true,
-    "barcode": "29562143",
-    "angle": 1,
-    "aim": "",
-    "series": "29562143"
-  },
-  {
-    "file_name": "29562143_2.jpeg",
-    "created_at": 1688964572.5365639,
-    "datetime": "10.07.2023 07:49:32",
-    "correct_file_name": true,
-    "barcode": "29562143",
-    "angle": 3,
-    "aim": "",
-    "series": "29562143"
-  },
-  {
-    "file_name": "29794445.jpeg",
-    "created_at": 1687271890.0138755,
-    "datetime": "20.06.2023 17:38:10",
-    "correct_file_name": true,
-    "barcode": "29794445",
-    "angle": 1,
-    "aim": "",
-    "series": "29794445"
-  },
-  {
-    "file_name": "29794445_2.jpeg",
-    "created_at": 1687271890.2538726,
-    "datetime": "20.06.2023 17:38:10",
-    "correct_file_name": true,
-    "barcode": "29794445",
-    "angle": 3,
-    "aim": "",
-    "series": "29794445"
-  },
-  {
-    "file_name": "29957426.jpeg",
-    "created_at": 1687271891.2998435,
-    "datetime": "20.06.2023 17:38:11",
-    "correct_file_name": true,
-    "barcode": "29957426",
-    "angle": 1,
-    "aim": "",
-    "series": "29957426"
-  },
-  {
-    "file_name": "29957426_2.jpeg",
-    "created_at": 1687271891.6238267,
-    "datetime": "20.06.2023 17:38:11",
-    "correct_file_name": true,
-    "barcode": "29957426",
-    "angle": 3,
-    "aim": "",
-    "series": "29957426"
-  },
-  {
-    "file_name": "3000000290651.jpeg",
-    "created_at": 1649926983.9459379,
-    "datetime": "14.04.2022 12:03:03",
-    "correct_file_name": true,
-    "barcode": "3000000290651",
-    "angle": 1,
-    "aim": "",
-    "series": "3000000290651"
-  },
-  {
-    "file_name": "3000000290651_2.jpeg",
-    "created_at": 1649926983.9615636,
-    "datetime": "14.04.2022 12:03:03",
-    "correct_file_name": true,
-    "barcode": "3000000290651",
-    "angle": 3,
-    "aim": "",
-    "series": "3000000290651"
-  },
-  {
-    "file_name": "3000000485453.jpeg",
-    "created_at": 1682421343.8980129,
-    "datetime": "25.04.2023 14:15:43",
-    "correct_file_name": true,
-    "barcode": "3000000485453",
-    "angle": 1,
-    "aim": "",
-    "series": "3000000485453"
-  },
-  {
-    "file_name": "3000000485453_2.jpeg",
-    "created_at": 1682421343.8990078,
-    "datetime": "25.04.2023 14:15:43",
-    "correct_file_name": true,
-    "barcode": "3000000485453",
-    "angle": 3,
-    "aim": "",
-    "series": "3000000485453"
-  },
-  {
     "file_name": "3300008525565.jpeg",
     "created_at": 1653573129.992277,
     "datetime": "26.05.2022 16:52:09",
@@ -860,46 +750,6 @@
     "series": "40730205"
   },
   {
-    "file_name": "543409.jpeg",
-    "created_at": 1680691705.2246072,
-    "datetime": "05.04.2023 13:48:25",
-    "correct_file_name": true,
-    "barcode": "543409",
-    "angle": 1,
-    "aim": "",
-    "series": "543409"
-  },
-  {
-    "file_name": "543409_2.jpeg",
-    "created_at": 1680691705.2176065,
-    "datetime": "05.04.2023 13:48:25",
-    "correct_file_name": true,
-    "barcode": "543409",
-    "angle": 3,
-    "aim": "",
-    "series": "543409"
-  },
-  {
-    "file_name": "544910.jpeg",
-    "created_at": 1689839565.349487,
-    "datetime": "20.07.2023 10:52:45",
-    "correct_file_name": true,
-    "barcode": "544910",
-    "angle": 1,
-    "aim": "",
-    "series": "544910"
-  },
-  {
-    "file_name": "544910_2.jpeg",
-    "created_at": 1689839565.6514719,
-    "datetime": "20.07.2023 10:52:45",
-    "correct_file_name": true,
-    "barcode": "544910",
-    "angle": 3,
-    "aim": "",
-    "series": "544910"
-  },
-  {
     "file_name": "7000037535160000.jpeg",
     "created_at": 1653573130.0704107,
     "datetime": "26.05.2022 16:52:10",
@@ -1020,26 +870,6 @@
     "series": "70064959860046"
   },
   {
-    "file_name": "70065082460021.jpeg",
-    "created_at": 1649926987.0239809,
-    "datetime": "14.04.2022 12:03:07",
-    "correct_file_name": true,
-    "barcode": "70065082460021",
-    "angle": 1,
-    "aim": "",
-    "series": "70065082460021"
-  },
-  {
-    "file_name": "70065082460021_2.jpeg",
-    "created_at": 1649926987.0396044,
-    "datetime": "14.04.2022 12:03:07",
-    "correct_file_name": true,
-    "barcode": "70065082460021",
-    "angle": 3,
-    "aim": "",
-    "series": "70065082460021"
-  },
-  {
     "file_name": "70065116290009.jpeg",
     "created_at": 1649926987.1021404,
     "datetime": "14.04.2022 12:03:07",
@@ -1090,106 +920,6 @@
     "series": "70065117920076"
   },
   {
-    "file_name": "70066046050024.jpeg",
-    "created_at": 1682593084.846974,
-    "datetime": "27.04.2023 13:58:04",
-    "correct_file_name": true,
-    "barcode": "70066046050024",
-    "angle": 1,
-    "aim": "",
-    "series": "70066046050024"
-  },
-  {
-    "file_name": "70066046050024_2.jpeg",
-    "created_at": 1682593084.8409739,
-    "datetime": "27.04.2023 13:58:04",
-    "correct_file_name": true,
-    "barcode": "70066046050024",
-    "angle": 3,
-    "aim": "",
-    "series": "70066046050024"
-  },
-  {
-    "file_name": "70066097310002.jpeg",
-    "created_at": 1682593822.499466,
-    "datetime": "27.04.2023 14:10:22",
-    "correct_file_name": true,
-    "barcode": "70066097310002",
-    "angle": 1,
-    "aim": "",
-    "series": "70066097310002"
-  },
-  {
-    "file_name": "70066097310002_2.jpeg",
-    "created_at": 1682593822.4914658,
-    "datetime": "27.04.2023 14:10:22",
-    "correct_file_name": true,
-    "barcode": "70066097310002",
-    "angle": 3,
-    "aim": "",
-    "series": "70066097310002"
-  },
-  {
-    "file_name": "70066166420013.jpeg",
-    "created_at": 1682582039.7453766,
-    "datetime": "27.04.2023 10:53:59",
-    "correct_file_name": true,
-    "barcode": "70066166420013",
-    "angle": 1,
-    "aim": "",
-    "series": "70066166420013"
-  },
-  {
-    "file_name": "70066166420013_2.jpeg",
-    "created_at": 1682582039.7473762,
-    "datetime": "27.04.2023 10:53:59",
-    "correct_file_name": true,
-    "barcode": "70066166420013",
-    "angle": 3,
-    "aim": "",
-    "series": "70066166420013"
-  },
-  {
-    "file_name": "70066182970001.jpeg",
-    "created_at": 1681300300.9403515,
-    "datetime": "12.04.2023 14:51:40",
-    "correct_file_name": true,
-    "barcode": "70066182970001",
-    "angle": 1,
-    "aim": "",
-    "series": "70066182970001"
-  },
-  {
-    "file_name": "70066182970001_2.jpeg",
-    "created_at": 1681300300.9423525,
-    "datetime": "12.04.2023 14:51:40",
-    "correct_file_name": true,
-    "barcode": "70066182970001",
-    "angle": 3,
-    "aim": "",
-    "series": "70066182970001"
-  },
-  {
-    "file_name": "70066223690057.jpeg",
-    "created_at": 1682582039.773375,
-    "datetime": "27.04.2023 10:53:59",
-    "correct_file_name": true,
-    "barcode": "70066223690057",
-    "angle": 1,
-    "aim": "",
-    "series": "70066223690057"
-  },
-  {
-    "file_name": "70066223690057_2.jpeg",
-    "created_at": 1682582039.774375,
-    "datetime": "27.04.2023 10:53:59",
-    "correct_file_name": true,
-    "barcode": "70066223690057",
-    "angle": 3,
-    "aim": "",
-    "series": "70066223690057"
-  },
-  {
     "file_name": "70066370010051.jpeg",
     "created_at": 1687271898.4486456,
     "datetime": "20.06.2023 17:38:18",
@@ -1208,26 +938,6 @@
     "angle": 3,
     "aim": "",
     "series": "70066370010051"
-  },
-  {
-    "file_name": "70066406720001.jpeg",
-    "created_at": 1692696956.58619,
-    "datetime": "22.08.2023 12:35:56",
-    "correct_file_name": true,
-    "barcode": "70066406720001",
-    "angle": 1,
-    "aim": "",
-    "series": "70066406720001"
-  },
-  {
-    "file_name": "70066406720001_2.jpeg",
-    "created_at": 1692696956.5821905,
-    "datetime": "22.08.2023 12:35:56",
-    "correct_file_name": true,
-    "barcode": "70066406720001",
-    "angle": 3,
-    "aim": "",
-    "series": "70066406720001"
   },
   {
     "file_name": "7779005749957.jpeg",

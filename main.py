@@ -159,7 +159,7 @@ class Renaming:
 def main():
     load_dotenv()
     source_path = r'E:\PHOTO_SOURCES\SOURCES'
-    destination_path = r'E:\PHOTO_SOURCES\RENAMED_TEST'
+    destination_path = r'E:\PHOTO_SOURCES\renamed_test'
     renaming = Renaming(source_path, destination_path)
     renaming.make_request()
     # renaming.save_unique_series_to_file()
