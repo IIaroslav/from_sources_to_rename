@@ -1,5 +1,8 @@
+import json
 import os
 import re
+import shutil
+import time
 from datetime import datetime
 
 import requests
@@ -14,8 +17,9 @@ def timestamp_to_datetime(timestamp):
 
 
 class Renaming:
-    def __init__(self, sources_path):
-        self.sources_path = sources_path
+    def __init__(self, source_path, destination_path):
+        self.source_path = source_path
+        self.destination_path = destination_path
         self.files_table = self.create_files_table()
 
         self.unique_aims = set()
@@ -26,8 +30,8 @@ class Renaming:
         table = []
         pattern = r'^\d+(?:_2)?\.jpeg$'
 
-        for file_name in os.listdir(self.sources_path):
-            full_path_file_name = os.path.join(self.sources_path, file_name)
+        for file_name in os.listdir(self.source_path):
+            full_path_file_name = os.path.join(self.source_path, file_name)
             created_at = os.path.getctime(full_path_file_name)
             correct_file_name = False
             angle = None
@@ -110,15 +114,60 @@ class Renaming:
             )
             self.aim_table.append(new_line)
 
+    def empty_destination(self):
+        for file_name in os.listdir(self.destination_path):
+            full_path = os.path.join(self.destination_path, file_name)
+            os.remove(full_path)
+
+    def rename(self):
+        start = time.time()
+        for aim in self.aim_table:
+            if aim['angle1']:
+                photo_file = aim['angle1'][0]
+                src = os.path.join(self.source_path, photo_file['file_name'])
+                new_file_name = f'{aim["aim"]}.jpeg'
+                dst = os.path.join(self.destination_path, new_file_name)
+                shutil.copy2(src, dst)
+            if aim['angle3']:
+                photo_file = aim['angle3'][0]
+                src = os.path.join(self.source_path, photo_file['file_name'])
+                new_file_name = f'{aim["aim"]}_2.jpeg'
+                dst = os.path.join(self.destination_path, new_file_name)
+                shutil.copy2(src, dst)
+        end = time.time()
+        print(f'The renaming operation took {end - start:.0f} seconds.')
+
+    def provide_report(self):
+        wrong_file_name = []
+        barcode_doesnt_exist = []
+        series_doesnt_have_aim = []
+        for file in self.files_table:
+            if not file['correct_file_name']:
+                wrong_file_name.append(file)
+                continue
+            if not file['barcode']:
+                barcode_doesnt_exist.append(file)
+                continue
+            if not file['aim']:
+                series_doesnt_have_aim.append(file)
+
+        with open('report.json', 'w') as file_json:
+            json.dump(series_doesnt_have_aim, file_json, indent=2)
+
+
 
 def main():
     load_dotenv()
     source_path = r'E:\PHOTO_SOURCES\SOURCES'
-    renaming = Renaming(source_path)
+    destination_path = r'E:\PHOTO_SOURCES\RENAMED_TEST'
+    renaming = Renaming(source_path, destination_path)
     renaming.make_request()
     # renaming.save_unique_series_to_file()
     renaming.join_1c_data()
     renaming.create_aim_table()
+    renaming.empty_destination()
+    renaming.rename()
+    renaming.provide_report()
 
 
 if __name__ == '__main__':
